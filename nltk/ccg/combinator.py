@@ -114,10 +114,12 @@ class UndirectedFunctionApplication(UndirectedBinaryCombinator):
 
     def combine(self, function, argument):
         if not function.is_function():
+            print("reached 1")
             return
 
         subs = function.arg().can_unify(argument)
         if subs is None:
+            print("reached 2")
             return
 
         yield function.res().substitute(subs)
