@@ -41,6 +41,20 @@ SEMANTICS_RE = re.compile(r"""\{([^}]+)\}""", re.UNICODE)
 # Strips comments from a line
 COMMENTS_RE = re.compile("""([^#]*)(?:#.*)?""")
 
+branch_coverage_str = {
+    "branch_if": False,
+    "branch_else": False,
+}
+
+def print_coverage_str():
+    total_branches = len(branch_coverage_str)
+    hit_branches = sum(1 for hit in branch_coverage_str.values() if hit)
+    coverage_percentage = (hit_branches / total_branches) * 100
+
+    print(f"\nBranch Coverage: {coverage_percentage:.2f}%")
+    for branch, hit in branch_coverage_str.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+
 
 class Token:
     """
@@ -68,7 +82,10 @@ class Token:
     def __str__(self):
         semantics_str = ""
         if self._semantics is not None:
+            branch_coverage_str["branch_if"] = True
             semantics_str = " {" + str(self._semantics) + "}"
+        else:
+            branch_coverage_str["branch_else"] = True
         return "" + str(self._categ) + semantics_str
 
     def __cmp__(self, other):
