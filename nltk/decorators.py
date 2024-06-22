@@ -66,10 +66,7 @@ def getinfo(func):
     else:
         branch_coverage_getinfo["branch_varkwargs_else"] = True
     fullsignature = inspect.signature(func)
-    # Convert Signature to str
     signature = str(fullsignature)
-
-    # pypy compatibility
     if hasattr(func, "__closure__") and func.__closure__:
         branch_coverage_getinfo["branch_hasattr_if"] = True
         _closure = func.__closure__
