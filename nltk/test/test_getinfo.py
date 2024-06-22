@@ -10,12 +10,10 @@ class TestGetInfo(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Reset branch coverage before any tests run
         cls.reset_coverage()
 
     @classmethod
     def tearDownClass(cls):
-        # Print coverage after all tests
         print("Printing Coverage Summary:")
         print_coverage_getinfo()
 
@@ -66,10 +64,7 @@ class TestGetInfo(unittest.TestCase):
         self.assertTrue(branch_coverage_getinfo["branch_varkwargs_if"])
 
 if __name__ == "__main__":
-    # Load the test cases
     loader = unittest.TestLoader()
     suite = loader.loadTestsFromTestCase(TestGetInfo)
-
-    # Run the tests
     runner = unittest.TextTestRunner()
     result = runner.run(suite)
