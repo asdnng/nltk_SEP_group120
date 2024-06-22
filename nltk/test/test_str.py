@@ -5,7 +5,7 @@ import os
 module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '/Users/niekbremer/nltk/nltk'))
 sys.path.insert(0, module_path)
 
-from ccg.lexicon import branch_coverage_str, print_coverage_str, Token  # Assuming Token is in lexicon.py
+from ccg.lexicon import branch_coverage_str, print_coverage_str, Token  
 
 class TestTokenStr(unittest.TestCase):
 
