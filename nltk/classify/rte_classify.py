@@ -6,7 +6,6 @@
 # For license information, see LICENSE.TXT
 
 """
-check
 Simple classifier for RTE corpus.
 
 It calculates the overlap in words and named entities between text and
