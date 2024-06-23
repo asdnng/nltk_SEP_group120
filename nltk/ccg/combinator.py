@@ -98,6 +98,11 @@ class BackwardCombinator(DirectedBinaryCombinator):
         return f"<{self._combinator}{self._suffix}"
 
 
+combine_coverage = {
+    "combine_branch_1": False,  # if branch for function.is_function()
+    "combine_branch_2": False,  # if branch for subs is None
+}
+
 class UndirectedFunctionApplication(UndirectedBinaryCombinator):
     """
     Class representing function application.
@@ -114,11 +119,13 @@ class UndirectedFunctionApplication(UndirectedBinaryCombinator):
 
     def combine(self, function, argument):
         if not function.is_function():
+            combine_coverage["combine_branch_1"] = True  # Mark branch as hit
             print("reached 1")
             return
 
         subs = function.arg().can_unify(argument)
         if subs is None:
+            combine_coverage["combine_branch_2"] = True  # Mark branch as hit
             print("reached 2")
             return
 
@@ -126,6 +133,10 @@ class UndirectedFunctionApplication(UndirectedBinaryCombinator):
 
     def __str__(self):
         return ""
+
+def print_combine_coverage():
+    for branch, hit in combine_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
 
 
 # Predicates for function application.
