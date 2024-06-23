@@ -17,6 +17,15 @@ except ImportError:
 
 _tadm_bin = None
 
+branch_coverage = {
+    "call_tadm_args_typeError": False,  # Branch for checking if args is a string
+    "call_tadm_args_typeMatched": False,
+    "call_tadm_tadm_bin_none": False,  # Branch for checking if _tadm_bin is None
+    "call_tadm_tadm_bin_NOT_none": False,
+    "call_tadm_failure": False, # Branch for subprocess failure
+    "call_tadm_success": False
+}
+
 
 def config_tadm(bin=None):
     global _tadm_bin
@@ -76,9 +85,16 @@ def call_tadm(args):
     Call the ``tadm`` binary with the given arguments.
     """
     if isinstance(args, str):
+        branch_coverage["call_tadm_args_typeError"] = True
         raise TypeError("args should be a list of strings")
+    else:
+        branch_coverage["call_tadm_args_typeMatched"] = True
+        
     if _tadm_bin is None:
+        branch_coverage["call_tadm_tadm_bin_none"] = True
         config_tadm()
+    else:
+        branch_coverage["call_tadm_tadm_bin_NOT_none"] = True
 
     # Call tadm via a subprocess
     cmd = [_tadm_bin] + args
@@ -87,9 +103,24 @@ def call_tadm(args):
 
     # Check the return code.
     if p.returncode != 0:
+        branch_coverage["call_tadm_failure"] = True
         print()
         print(stderr)
         raise OSError("tadm command failed!")
+    else:
+        branch_coverage["call_tadm_success"] = True
+
+def print_coverage():
+    total_branches = len(branch_coverage)
+    covered_branches = sum(1 for covered in branch_coverage.values() if covered)
+    coverage_percentage = (covered_branches / total_branches) * 100
+    print(f"Branch Coverage: {coverage_percentage:.2f}% ({covered_branches}/{total_branches} branches covered)")
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+        
+def reset_coverage():
+    for key in branch_coverage.keys():
+        branch_coverage[key] = False
 
 
 def names_demo():
@@ -120,3 +151,78 @@ def encoding_demo():
 if __name__ == "__main__":
     encoding_demo()
     names_demo()
+    
+def test_call_tadm_typeError_T():
+    reset_coverage()
+    try:
+        call_tadm("hello")
+    except Exception as e:
+        print(e)
+    
+    assert(branch_coverage["call_tadm_args_typeError"] == True)
+
+    print("test_call_tadm_typeError_T")
+    print_coverage()
+
+    print("------------")
+    
+def test_call_tadm_typeMatched_bin_None():
+    reset_coverage()
+    try:
+        call_tadm(["hello"])
+    except Exception as e:
+        print(f"Test failed: {e}")
+        
+    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
+    assert(branch_coverage["call_tadm_tadm_bin_none"] == True)
+        
+    print("test_call_tadm_typeMatched_bin_None")
+    print_coverage()
+
+    print("------------")
+    
+def test_call_tadm_bin_NOT_None_Failure():
+    reset_coverage()
+    global _tadm_bin
+    _tadm_bin = "/bin/ls"
+    try:
+        call_tadm(["/nonexistent_directory"])
+    except OSError as e:
+        print(f"Error: {e}")
+        
+    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
+    assert(branch_coverage["call_tadm_tadm_bin_NOT_none"] == True)
+    assert(branch_coverage["call_tadm_failure"] == True)
+    
+
+    print("test_call_tadm_bin_NOT_None_Failure")
+    print_coverage()
+    
+    print("------------")
+    
+def test_call_tadm_bin_NOT_None_Success():
+    reset_coverage()
+    global _tadm_bin
+    _tadm_bin = "/bin/echo" 
+    try:
+        call_tadm(["hello"])
+    except Exception as e:
+        print(f"Test failed: {e}")
+    
+    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
+    assert(branch_coverage["call_tadm_tadm_bin_NOT_none"] == True)
+    assert(branch_coverage["call_tadm_success"] == True)
+
+    print("test_call_tadm_bin_NOT_None_Success")
+    print_coverage()
+    
+    print("------------")
+    
+def run_testAll():
+    test_call_tadm_typeError_T()
+    test_call_tadm_typeMatched_bin_None()
+    test_call_tadm_bin_NOT_None_Failure()
+    test_call_tadm_bin_NOT_None_Success()
+    
+run_testAll()
+
