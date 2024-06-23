@@ -21,6 +21,13 @@ from nltk.classify.maxent import MaxentClassifier
 from nltk.classify.util import accuracy
 from nltk.tokenize import RegexpTokenizer
 
+branch_coverage = {
+    "branch_if_sample_N_not_none": False,
+    "branch_else_sample_N_none": False,
+    "branch_if_algorithm_megam": False,
+    "branch_elif_algorithm_GIS_IIS": False,
+    "branch_else_algorithm_error": False
+}
 
 class RTEFeatureExtractor:
     """
@@ -159,8 +166,12 @@ def rte_classifier(algorithm, sample_N=None):
     test_set = rte_corpus.pairs(["rte1_test.xml", "rte2_test.xml", "rte3_test.xml"])
 
     if sample_N is not None:
+        branch_coverage["branch_if_sample_N_not_none"] = True
         train_set = train_set[:sample_N]
         test_set = test_set[:sample_N]
+    else:
+        
+        branch_coverage["branch_else_sample_N_none"] = True
 
     featurized_train_set = rte_featurize(train_set)
     featurized_test_set = rte_featurize(test_set)
@@ -168,10 +179,13 @@ def rte_classifier(algorithm, sample_N=None):
     # Train the classifier
     print("Training classifier...")
     if algorithm in ["megam"]:  # MEGAM based algorithms.
+        branch_coverage["branch_if_algorithm_megam"] = True
         clf = MaxentClassifier.train(featurized_train_set, algorithm)
     elif algorithm in ["GIS", "IIS"]:  # Use default GIS/IIS MaxEnt algorithm
+        branch_coverage["branch_elif_algorithm_GIS_IIS"] = True
         clf = MaxentClassifier.train(featurized_train_set, algorithm)
     else:
+        branch_coverage["branch_else_algorithm_error"] = True
         err_msg = str(
             "RTEClassifier only supports these algorithms:\n "
             "'megam', 'GIS', 'IIS'.\n"
@@ -181,3 +195,88 @@ def rte_classifier(algorithm, sample_N=None):
     acc = accuracy(clf, featurized_test_set)
     print("Accuracy: %6.4f" % acc)
     return clf
+
+def print_coverage():
+    total_branches = len(branch_coverage)
+    covered_branches = sum(1 for covered in branch_coverage.values() if covered)
+    coverage_percentage = (covered_branches / total_branches) * 100
+    print(f"Branch Coverage: {coverage_percentage:.2f}% ({covered_branches}/{total_branches} branches covered)")
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+        
+def reset_coverage():
+    for key in branch_coverage.keys():
+        branch_coverage[key] = False
+
+def test_rte_classification_without_megam():
+    try:
+        reset_coverage()
+        clf = rte_classifier("IIS", sample_N=100)
+        clf = rte_classifier("GIS", sample_N=100)
+        print("test_rte_classification_without_megam")
+        print_coverage()
+    except Exception as e:
+        print(e)
+        print("test_rte_classification_without_megam")
+        print_coverage()
+        
+    assert(branch_coverage["branch_if_sample_N_not_none"] == True)
+    assert(branch_coverage["branch_elif_algorithm_GIS_IIS"] == True)
+        
+    print("---------------")
+        
+def test_rte_classification_with_megam():
+    try:
+        reset_coverage()
+        clf = rte_classifier("megam", sample_N=100)
+        print("test_rte_classification_with_megam")
+        print_coverage()
+    except LookupError as e:
+        print(e)
+        print("test_rte_classification_with_megam")
+        print_coverage()
+        
+    assert(branch_coverage["branch_if_sample_N_not_none"] == True)
+    assert(branch_coverage["branch_if_algorithm_megam"] == True)
+        
+    print("---------------")
+        
+def test_rte_classification_sampleN_None():
+    try:
+        reset_coverage()
+        clf = rte_classifier("GIS", None)
+        print("test_rte_classification_sampleN_None")
+        print_coverage()
+    except Exception as e:
+        print(e)
+        print("test_rte_classification_sampleN_None")
+        print_coverage()
+        
+    assert(branch_coverage["branch_else_sample_N_none"] == True)
+    assert(branch_coverage["branch_elif_algorithm_GIS_IIS"] == True)
+        
+    print("---------------")
+        
+def test_rte_classification_unsupported_algorithm():
+    try:
+        reset_coverage()
+        clf = rte_classifier("ALGO", sample_N=100)
+        print("test_rte_classification_unsupported_algorithm")
+        print_coverage()
+    except Exception as e:
+        print(e)
+        print("test_rte_classification_unsupported_algorithm")
+        print_coverage()
+        
+    assert(branch_coverage["branch_if_sample_N_not_none"] == True)
+    assert(branch_coverage["branch_else_algorithm_error"] == True)
+        
+    print("---------------")
+        
+def run_testAll():
+    test_rte_classification_without_megam()
+    test_rte_classification_with_megam()
+    test_rte_classification_sampleN_None()
+    test_rte_classification_unsupported_algorithm()
+    
+run_testAll()
