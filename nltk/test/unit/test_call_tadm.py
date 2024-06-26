@@ -31,7 +31,7 @@ class TestCallTadm(unittest.TestCase):
         print("test_call_tadm_typeMatched_bin_None")
         test_tadm_bin_generator(None)
         try:
-            call_tadm(["hi"])
+            call_tadm(["hello"])
             print_coverage()
         except Exception as e:
             print_coverage()
@@ -44,11 +44,13 @@ class TestCallTadm(unittest.TestCase):
     def test_call_tadm_bin_NOT_None_Failure(self):
         print("test_call_tadm_bin_NOT_None_Failure")
         test_tadm_bin_generator("/bin/ls")
-        try:
-            call_tadm(["/nonexistent_directory"])
-            print_coverage()
-        except Exception:
-            print_coverage()
+        expected_stderr = "ls: cannot access '/nonexistent_directory': No such file or directory\n"
+        
+        with self.assertRaises(Exception):
+            stdout, stderr = call_tadm(["/nonexistent_directory"])
+            self.assertEqual(stderr, expected_stderr)
+            
+        print_coverage()
 
         self.assertTrue(branch_coverage["call_tadm_args_typeMatched"])
         self.assertTrue(branch_coverage["call_tadm_tadm_bin_NOT_none"])
@@ -59,8 +61,12 @@ class TestCallTadm(unittest.TestCase):
     def test_call_tadm_bin_NOT_None_Success(self):
         print("test_call_tadm_bin_NOT_None_Success")
         test_tadm_bin_generator("/bin/echo" )
+        expected_stdout = "hello\n"
+        
         try:
-            call_tadm(["hello"])
+            stdout, stderr = call_tadm(["hello"])
+            self.assertEqual(stdout, expected_stdout)
+            self.assertEqual(stderr, "")
             print_coverage()
         except Exception as e:
             print_coverage()
