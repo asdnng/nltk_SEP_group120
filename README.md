@@ -30,7 +30,7 @@ Programming language: Python
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
 <div align="center">
-  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png" alt="match_coverage_report" width="200">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png" alt="match_coverage_report">
 </div>
 
 <Function 2 _get_pos>
