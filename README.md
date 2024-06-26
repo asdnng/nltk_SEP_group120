@@ -31,12 +31,12 @@ Programming language: Python
 
 <Provide a screenshot of the coverage results output by the instrumentation>
 
-
+![match coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png)
 
 <Function 2 _get_pos>
 
 <Provide the same kind of information provided for Function 1>
-
+![getpos_coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png)
 
 ## Coverage improvement
 
@@ -51,9 +51,9 @@ Programming language: Python
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
 
 <Provide a screenshot of the old coverage results (the same as you already showed above)>
-
+![match coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png)
 <Provide a screenshot of the new coverage results>
-
+![match new coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_enhanced.png)
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
  The main reason for the improved coverage is that I added test cases and improved existing test cases to extend them to test all conditional branches. Previously, only some branches were tested, but I added test cases that could handle all input conditions so that each branch could be executed. So, coverage of the previous version was 60%, after enhancement, I got 100% test coverage.
@@ -61,10 +61,12 @@ Programming language: Python
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
+![getpos_coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png)
 
 
+![getpos_new coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_enhanced.png)
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
- This function also has 100% test coverage after enhancement. Because I added some test cases like the first one. Before the improvement, coverage of this function was 25%
+ This function also has 100% test coverage after enhancement after I added some test cases like the first one. Before the improvement, coverage of this function was 25%
 
 ### Overall
 
