@@ -34,7 +34,9 @@ Programming language: Python
 </div>
 
 <Function 2 _get_pos>
-![getpos_coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png)
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png" alt="getpos_coverage_report">
+</div>
 
 ## Coverage improvement
 
@@ -48,18 +50,21 @@ Programming language: Python
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
 
-
-![match coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png)
-![match new coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_enhanced.png)
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_results.png" alt="match_coverage_report">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/match_enhanced.png" alt="match_enhahnced">
+</div>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
  The main reason for the improved coverage is that I added test cases and improved existing test cases to extend them to test all conditional branches. Previously, only some branches were tested, but I added test cases that could handle all input conditions so that each branch could be executed. So, coverage of the previous version was 60%, after enhancement, I got 100% test coverage.
 
 <Test 2>
 
-![getpos_coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png)
-![getpos_new coverage report](https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_enhanced.png)
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_results.png" alt="getpos_coverage_report">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getpos_enhanced.png" alt="getpos_enhahnced">
+</div>
+
  This function also has 100% test coverage after enhancement after I added some test cases like the first one. Before the improvement, coverage of this function was 25%
 
 ### Overall
