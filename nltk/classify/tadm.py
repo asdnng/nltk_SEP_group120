@@ -18,11 +18,11 @@ except ImportError:
 _tadm_bin = None
 
 branch_coverage = {
-    "call_tadm_args_typeError": False,  # Branch for checking if args is a string
+    "call_tadm_args_typeError": False,
     "call_tadm_args_typeMatched": False,
-    "call_tadm_tadm_bin_none": False,  # Branch for checking if _tadm_bin is None
+    "call_tadm_tadm_bin_none": False,
     "call_tadm_tadm_bin_NOT_none": False,
-    "call_tadm_failure": False, # Branch for subprocess failure
+    "call_tadm_failure": False,
     "call_tadm_success": False
 }
 
@@ -152,77 +152,6 @@ if __name__ == "__main__":
     encoding_demo()
     names_demo()
     
-def test_call_tadm_typeError_T():
-    reset_coverage()
-    try:
-        call_tadm("hello")
-    except Exception as e:
-        print(e)
-    
-    assert(branch_coverage["call_tadm_args_typeError"] == True)
-
-    print("test_call_tadm_typeError_T")
-    print_coverage()
-
-    print("------------")
-    
-def test_call_tadm_typeMatched_bin_None():
-    reset_coverage()
-    try:
-        call_tadm(["hello"])
-    except Exception as e:
-        print(f"Test failed: {e}")
-        
-    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
-    assert(branch_coverage["call_tadm_tadm_bin_none"] == True)
-        
-    print("test_call_tadm_typeMatched_bin_None")
-    print_coverage()
-
-    print("------------")
-    
-def test_call_tadm_bin_NOT_None_Failure():
-    reset_coverage()
+def test_tadm_bin_generator(path):
     global _tadm_bin
-    _tadm_bin = "/bin/ls"
-    try:
-        call_tadm(["/nonexistent_directory"])
-    except OSError as e:
-        print(f"Error: {e}")
-        
-    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
-    assert(branch_coverage["call_tadm_tadm_bin_NOT_none"] == True)
-    assert(branch_coverage["call_tadm_failure"] == True)
-    
-
-    print("test_call_tadm_bin_NOT_None_Failure")
-    print_coverage()
-    
-    print("------------")
-    
-def test_call_tadm_bin_NOT_None_Success():
-    reset_coverage()
-    global _tadm_bin
-    _tadm_bin = "/bin/echo" 
-    try:
-        call_tadm(["hello"])
-    except Exception as e:
-        print(f"Test failed: {e}")
-    
-    assert(branch_coverage["call_tadm_args_typeMatched"] == True)
-    assert(branch_coverage["call_tadm_tadm_bin_NOT_none"] == True)
-    assert(branch_coverage["call_tadm_success"] == True)
-
-    print("test_call_tadm_bin_NOT_None_Success")
-    print_coverage()
-    
-    print("------------")
-    
-def run_testAll():
-    test_call_tadm_typeError_T()
-    test_call_tadm_typeMatched_bin_None()
-    test_call_tadm_bin_NOT_None_Failure()
-    test_call_tadm_bin_NOT_None_Success()
-    
-run_testAll()
-
+    _tadm_bin = path
