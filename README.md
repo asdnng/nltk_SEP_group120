@@ -78,3 +78,4 @@ Programming language: Python
 
 <Write what each group member did>
 
+Yujin Choi(2769224) : matchbracket funtion in lexicon.py & _get_pos function in wordnet.py
