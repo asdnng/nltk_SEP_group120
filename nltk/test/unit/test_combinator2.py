@@ -7,7 +7,6 @@ class MockResult:
 class MockArgument:
     def can_unify(self, other_argument):
         if other_argument == 10:
-            print("combine_branch_2 was not hit")
             return {"example_substitution": "value"}
         print("combine_branch_2 was hit")
         return None
