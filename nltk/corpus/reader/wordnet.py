@@ -2497,35 +2497,63 @@ def information_content(synset, ic):
 # (each identifier has a 'n' or 'v' suffix)
 
 
-branch_coverage = {
+get_pos_branch_coverage = {
     "branch_noun": False,  
     "branch_verb": False,
     "branch_else": False,
     "branch_error": False # exception 
 }
 
+total_branches = len(get_pos_branch_coverage)
+
 def _get_pos(field):
     if field[-1] == "n":
-        branch_coverage["branch_noun"] = True
+        get_pos_branch_coverage["branch_noun"] = True
         return NOUN
     elif field[-1] == "v":
-        branch_coverage["branch_verb"] = True
+        get_pos_branch_coverage["branch_verb"] = True
         return VERB
     else:
-        branch_coverage["branch_else"] = True
+        get_pos_branch_coverage["branch_else"] = True
         msg = (
             "Unidentified part of speech in WordNet Information Content file "
             "for field %s" % field
         )
-        branch_coverage["branch_error"] = True
+        get_pos_branch_coverage["branch_error"] = True
         raise ValueError(msg)
 
 def print_coverage():
-    for branch, hit in branch_coverage.items():
+    hits = sum(1 for hit in get_pos_branch_coverage.values() if hit)
+    coverage_percent = (hits / total_branches) * 100
+    print(f"Coverage: {coverage_percent:.2f}%")
+    for branch, hit in get_pos_branch_coverage.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
 
-try:
-    print(_get_pos("n")) 
-except ValueError as e:
-    print(e)
-print_coverage()
+test_cases = [
+    ("n", "noun", "Single character noun"),
+    ("acv", "verb", "Single character verb"),
+    ("tree", None, "Raise an exception for unidentified POS")
+]
+
+def run_test_cases():
+    for field, expected_result, description in test_cases:
+        print(f"Test case: {description}")
+        try:
+            result = _get_pos(field)
+            assert result == expected_result, f"Expected result {expected_result}, got {result}"
+            print("Result: Passed")
+        except ValueError as e:
+            if expected_result is None:
+                print("Caught an error as expected: ", e)
+            else:
+                print("Unexpected error: ", e)
+        except AssertionError as ae:
+            print(ae)
+
+        print_coverage()
+        # Reset coverage after each test case for clarity 
+        for key in get_pos_branch_coverage:
+            get_pos_branch_coverage[key] = False
+        print("------------------------------------------")
+
+run_test_cases()
