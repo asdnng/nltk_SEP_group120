@@ -207,3 +207,10 @@ def print_coverage():
 def reset_coverage():
     for key in branch_coverage.keys():
         branch_coverage[key] = False
+        
+try:
+    clf = rte_classifier("megam", sample_N=200)
+    print_coverage()
+except LookupError as e:
+    print(e)
+    print_coverage()
