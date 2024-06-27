@@ -150,6 +150,8 @@ Additional test cases were written to cover all possible branches in the getinfo
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
+https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/830e664ee5ebe71ecba8b60f0e432caf7f5c0bdd
+
 <Provide a screenshot of the coverage results output by the instrumentation>
 
 <div align="center">
@@ -159,6 +161,8 @@ Additional test cases were written to cover all possible branches in the getinfo
 <call_tadm>
 
 <Provide the same kind of information provided for Function 1>
+
+https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/2b3c10cff7423ce56809085d8a48af7f1c658cd6
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
@@ -173,6 +177,10 @@ Additional test cases were written to cover all possible branches in the getinfo
 <Test 1>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+
+final commits to finalize working test:
+
+https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/d33957af112d13a4bf222e1fe79eb89cb8980d02
 
 <Provide a screenshot of the old coverage results (the same as you already showed above)>
 
@@ -199,6 +207,10 @@ Initial coverage measurement i conducted resulted in hitting only 2 branch flags
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
+
+final commits to finalize working test:
+
+https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/ed1e434709ab006e91d76d0152855df4322c3c80
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
