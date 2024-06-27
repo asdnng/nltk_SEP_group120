@@ -78,10 +78,18 @@ Programming language: Python
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
 <Provide a screenshot of the coverage results output by the instrumentation>
-  
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/rte_classify_old_coverage.png">
+</div>
+
 <call_tadm>
 
 <Provide the same kind of information provided for Function 1>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
+</div>
 
 ## Coverage improvement
 
@@ -95,13 +103,41 @@ Programming language: Python
 
 <Provide a screenshot of the old coverage results (the same as you already showed above)>
 
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/rte_classify_old_coverage.png">
+</div>
+
 <Provide a screenshot of the new coverage results>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_1.png">
+</div>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_2.png">
+</div>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_3.png">
+</div>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_4.png">
+</div>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
+</div>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_call_tadm_new_coverage.png">
+</div>
 
 ## Coverage measurement
 
