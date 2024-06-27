@@ -136,7 +136,7 @@ Programming language: Python
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20coverage.png">
-  <img src="hhttps://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20hit.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20hit.png">
 </div>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
