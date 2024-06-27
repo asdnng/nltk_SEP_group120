@@ -272,7 +272,7 @@ From the start of testing the combine function, I managed to secure 100% on my c
 
 <Write what each group member did>
 
-Yujin Choi(2769224) : made test printing function that all group members can use, selecting subject
+Yujin Choi(2769224) : made test printing function that all group members can use, selecting subject, help to other memebers how to set test environment 
 
 Juan Sebastian Dhanaharsa(276575) : 
 
