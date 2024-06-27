@@ -107,7 +107,7 @@ Programming language: Python
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/rte_classify_old_coverage.png">
 </div>
 
-<Provide a screenshot of the new coverage results>
+<"Provide a screenshot of the new coverage results">
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_1.png">
