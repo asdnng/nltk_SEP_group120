@@ -155,3 +155,10 @@ if __name__ == "__main__":
 def test_tadm_bin_generator(path):
     global _tadm_bin
     _tadm_bin = path
+    
+try:
+    call_tadm("world")
+    print_coverage()
+except Exception as e:
+    print(e)
+    print_coverage()
