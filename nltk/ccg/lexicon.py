@@ -147,6 +147,15 @@ class CCGLexicon:
 # -----------
 
 
+matchBrackets_branch_coverage = {
+    "branch_while": False,
+    "branch_if_startswith_paren": False,
+    "branch_else_startswith_paren": False,
+    "branch_if_startswith_close_paren": False,
+    "branch_raise" : False
+}
+total_branches = len(matchBrackets_branch_coverage)
+
 def matchBrackets(string):
     """
     Separate the contents matching the first set of brackets from the rest of
@@ -154,17 +163,53 @@ def matchBrackets(string):
     """
     rest = string[1:]
     inside = "("
-
+    
     while rest != "" and not rest.startswith(")"):
+        matchBrackets_branch_coverage["branch_while"] = True
         if rest.startswith("("):
+            matchBrackets_branch_coverage["branch_if_startswith_paren"] = True  
             (part, rest) = matchBrackets(rest)
             inside = inside + part
         else:
+            matchBrackets_branch_coverage["branch_else_startswith_paren"] = True  
             inside = inside + rest[0]
             rest = rest[1:]
     if rest.startswith(")"):
+        matchBrackets_branch_coverage["branch_if_startswith_close_paren"] = True
         return (inside + ")", rest[1:])
+    matchBrackets_branch_coverage["branch_raise"] = True 
     raise AssertionError("Unmatched bracket in string '" + string + "'")
+
+def print_coverage():
+    hits = sum(1 for hit in matchBrackets_branch_coverage.values() if hit)
+    coverage_percent = (hits / total_branches) * 100
+    print(f"Coverage: {coverage_percent:.2f}%")
+    for branch, hit in matchBrackets_branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+
+test_cases = [
+    ("(content)", "Single brackets"),
+    ("((content))", "Handle nested brackets"),
+    ("(content)(more)", "Handle consecutive brackets"),
+    ("((content)", "Raise an exception for unmatched brackets")
+]
+
+def run_test_cases():
+    for test_input, description in test_cases:
+        print(f"Test case: {description}")
+        try:
+            result = matchBrackets(test_input)
+            print(f"Result: {result}")
+        except AssertionError as error:
+            print(f"Caught an error as expected: {error}")
+        finally:
+            print_coverage()
+            # Reset coverage after each test case for clarity
+            for key in matchBrackets_branch_coverage:
+                matchBrackets_branch_coverage[key] = False
+        print("------------------------------------------")
+
+run_test_cases()
 
 
 def nextCategory(string):
