@@ -116,6 +116,8 @@ Programming language: Python
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_4.png">
 </div>
 
+(these were all produced in one command but because function has other printouts, had to separate the screenshots)
+
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
 <Test 2>
