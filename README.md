@@ -103,7 +103,53 @@ Programming language: Python
 
 <Provide the same kind of information provided for Test 1>
 
+## Coverage measurement
 
+### Your own coverage tool
+
+<Juan Sebastian Dhanaharsa>
+
+<Function 1: can_combine>
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine.png">
+</div>
+
+<Function 2: combine>
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine.png">
+</div>
+
+## Coverage improvement
+
+### Individual tests
+
+<The following is supposed to be repeated for each group member>
+
+<Juan Sebastian Dhanaharsa>
+
+<Test 1>
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20coverage.png">
+  <img src="hhttps://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20hit.png">
+</div>
+
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
+Since the initial of my implementation of tests for the can_combine method, I achieved 100% branch coverage without the need for further enhancements. This coverage percentage was attained by ensuring that the test cases covered all possible scenarios for the input parameters function and argument.
+
+<Test 2>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20coverage.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hit.png">
+</div>
+
+From the start of testing the combine function, I managed to secure another 100% on my coverage testing without necessitating any additional modifications.
 
 ### Overall
 
@@ -118,3 +164,4 @@ Programming language: Python
 <Write what each group member did>
 
 Yujin Choi(2769224) : made test printing function that all group members can use, selecting subject
+Juan Sebastian Dhanaharsa(276575) : 
