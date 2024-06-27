@@ -220,7 +220,7 @@ Additional test cases were written to cover all possible branches in the getinfo
 
 <Function 2: combine>
 <div align="center">
-  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hithit.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hit.png">
 </div>
 
 ## Coverage improvement
@@ -247,7 +247,7 @@ Since the initial of my implementation of tests for the can_combine method, I ac
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20coverage.png">
-  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hit.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hithit.png">
 </div>
 
 From the start of testing the combine function, I managed to secure another 100% on my coverage testing without necessitating any additional modifications.
