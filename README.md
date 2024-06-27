@@ -67,6 +67,8 @@ Programming language: Python
 
  This function also has 100% test coverage after enhancement after I added some test cases like the first one. Before the improvement, coverage of this function was 25%
 
+### Your own coverage tool
+
 <Niek>
 
 <Token.str>
@@ -74,9 +76,14 @@ Programming language: Python
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
 <Provide a screenshot of the coverage results output by the instrumentation>
-
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/branchgetstr-precoverage.png" alt="str-instrumentation">
+</div>
 
 <getinfo>
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/branchgetinfo-precoverage.png" alt="getinfo_instrumentation">
+</div>
 
 <Provide the same kind of information provided for Function 1>
 
@@ -96,17 +103,37 @@ Programming language: Python
 
 <Provide a screenshot of the old coverage results (the same as you already showed above)>
 
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/branchgetstr-precoverage.png" alt="str-instrumentation">
+</div>
+
 <Provide a screenshot of the new coverage results>
 
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getstr improved coverage.png" alt="str-improvement">
+</div>
+
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
-The coverage improved with 100%
+The coverage improved from 0% covered to 100% covered
 Specific tests were written to check the output of the str method both with and without semantics. This ensures that all branches in the str method are exercised.
 
 <Test 2: test_getinfo>
 
-<Provide the same kind of information provided for Test 1>
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
 
-The coverage improved with 50%
+<Provide a screenshot of the old coverage results (the same as you already showed above)>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/branchgetinfo-precoverage.png" alt="getinfo_instrumentation">
+</div>
+
+<Provide a screenshot of the new coverage results>
+
+<div align="center">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/getinfo improved coverage.png" alt="getinfo-improvement">
+</div>
+
+The coverage improved from 50% covered to 100% covered
 Additional test cases were written to cover all possible branches in the getinfo    function. For example, tests were added to ensure that functions with variable arguments, keyword arguments, and closures are properly tested.
  
 
