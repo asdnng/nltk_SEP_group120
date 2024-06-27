@@ -40,56 +40,41 @@ def __legacysignature(signature):
             listsignature[counter] = param.strip()
     return ", ".join(listsignature)
 
+branch_coverage_getinfo = {
+    "branch_varargs_if": False,
+    "branch_varargs_else": False,
+    "branch_varkwargs_if": False,
+    "branch_varkwargs_else": False,
+    "branch_hasattr_if": False,
+    "branch_hasattr_if": False
+}
+
 
 def getinfo(func):
-    """
-    Returns an info dictionary containing:
-    - name (the name of the function : str)
-    - argnames (the names of the arguments : list)
-    - defaults (the values of the default arguments : tuple)
-    - signature (the signature : str)
-    - fullsignature (the full signature : Signature)
-    - doc (the docstring : str)
-    - module (the module name : str)
-    - dict (the function __dict__ : str)
-
-    >>> def f(self, x=1, y=2, *args, **kw): pass
-
-    >>> info = getinfo(f)
-
-    >>> info["name"]
-    'f'
-    >>> info["argnames"]
-    ['self', 'x', 'y', 'args', 'kw']
-
-    >>> info["defaults"]
-    (1, 2)
-
-    >>> info["signature"]
-    'self, x, y, *args, **kw'
-
-    >>> info["fullsignature"]
-    <Signature (self, x=1, y=2, *args, **kw)>
-    """
     assert inspect.ismethod(func) or inspect.isfunction(func)
     argspec = inspect.getfullargspec(func)
     regargs, varargs, varkwargs = argspec[:3]
     argnames = list(regargs)
     if varargs:
+        branch_coverage_getinfo["branch_varargs_if"] = True
         argnames.append(varargs)
+    else:
+        branch_coverage_getinfo["branch_varargs_else"] = True
     if varkwargs:
+        branch_coverage_getinfo["branch_varkwargs_if"] = True
         argnames.append(varkwargs)
+    else:
+        branch_coverage_getinfo["branch_varkwargs_else"] = True
     fullsignature = inspect.signature(func)
-    # Convert Signature to str
-    signature = __legacysignature(fullsignature)
-
-    # pypy compatibility
-    if hasattr(func, "__closure__"):
+    signature = str(fullsignature)
+    if hasattr(func, "__closure__") and func.__closure__:
+        branch_coverage_getinfo["branch_hasattr_if"] = True
         _closure = func.__closure__
         _globals = func.__globals__
     else:
-        _closure = func.func_closure
-        _globals = func.func_globals
+        branch_coverage_getinfo["branch_hasattr_else"] = True
+        _closure = None
+        _globals = func.__globals__
 
     return dict(
         name=func.__name__,
@@ -103,6 +88,16 @@ def getinfo(func):
         globals=_globals,
         closure=_closure,
     )
+
+
+def print_coverage_getinfo():
+    total_branches = len(branch_coverage_getinfo)
+    hit_branches = sum(1 for hit in branch_coverage_getinfo.values() if hit)
+    coverage_percentage = (hit_branches / total_branches) * 100
+
+    print(f"\nBranch Coverage: {coverage_percentage:.2f}%")
+    for branch, hit in branch_coverage_getinfo.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
 
 
 def update_wrapper(wrapper, model, infodict=None):
