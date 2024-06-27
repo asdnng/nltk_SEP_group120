@@ -101,43 +101,48 @@ class BackwardCombinator(DirectedBinaryCombinator):
 combine_coverage = {
     "combine_branch_1": False,  # if branch for function.is_function()
     "combine_branch_2": False,  # if branch for subs is None
+    "combine_else_1": False,
+    "combine_else_2": False
 }
+total_branches = len(combine_coverage)
 
 class UndirectedFunctionApplication(UndirectedBinaryCombinator):
-    """
-    Class representing function application.
-    Implements rules of the form:
-    X/Y Y -> X (>)
-    And the corresponding backwards application rule
-    """
 
     def can_combine(self, function, argument):
         if not function.is_function():
             return False
-
+        
         return not function.arg().can_unify(argument) is None
 
     def combine(self, function, argument):
         if not function.is_function():
+            print("Covered1")
             combine_coverage["combine_branch_1"] = True  # Mark branch as hit
-            print("reached 1")
             return
+        else:
+            print("Covered2")
+            combine_coverage["combine_else_1"] = True
 
         subs = function.arg().can_unify(argument)
         if subs is None:
+            print("Covered3")
             combine_coverage["combine_branch_2"] = True  # Mark branch as hit
-            print("reached 2")
             return
+        else:
+            print("Covered4")
+            combine_coverage["combine_else_2"] = True
 
         yield function.res().substitute(subs)
 
     def __str__(self):
         return ""
 
-def print_combine_coverage():
-    for branch, hit in combine_coverage.items():
-        print(f"{branch} was {'hit' if hit else 'not hit'}")
-
+def print_coverage():
+        hits = sum(1 for hit in combine_coverage.values() if hit)
+        coverage_percent = (hits / total_branches) * 100
+        print(f"Coverage: {coverage_percent:.2f}%")
+        for branch, hit in combine_coverage.items():
+            print(f"{branch} was {'hit' if hit else 'not hit'}")
 
 # Predicates for function application.
 
