@@ -67,6 +67,49 @@ Programming language: Python
 
  This function also has 100% test coverage after enhancement after I added some test cases like the first one. Before the improvement, coverage of this function was 25%
 
+<Niek>
+
+<Token.str>
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
+
+<Provide a screenshot of the coverage results output by the instrumentation>
+
+
+<getinfo>
+
+<Provide the same kind of information provided for Function 1>
+
+
+
+## Coverage improvement
+
+### Individual tests
+
+<The following is supposed to be repeated for each group member>
+
+<Niek>
+
+<Test 1: test_str>
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+
+<Provide a screenshot of the old coverage results (the same as you already showed above)>
+
+<Provide a screenshot of the new coverage results>
+
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
+The coverage improved with 100%
+Specific tests were written to check the output of the str method both with and without semantics. This ensures that all branches in the str method are exercised.
+
+<Test 2: test_getinfo>
+
+<Provide the same kind of information provided for Test 1>
+
+The coverage improved with 50%
+Additional test cases were written to cover all possible branches in the getinfo    function. For example, tests were added to ensure that functions with variable arguments, keyword arguments, and closures are properly tested.
+ 
+
  ## Coverage measurement
 
  ### Your own coverage tool
