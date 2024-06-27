@@ -17,7 +17,7 @@ Programming language: Python
 <Inform the name of the existing tool that was executed and how it was executed>
 
 <Show the coverage results provided by the existing tool with a screenshot>
-
+<img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/overall_coverage.PNG" alt="original_coverage">
 
 ### Your own coverage tool
 
