@@ -241,7 +241,7 @@ Additional test cases were written to cover all possible branches in the getinfo
 </div>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
-Since the initial of my implementation of tests for the can_combine method, I achieved 100% branch coverage without the need for further enhancements. This coverage percentage was attained by ensuring that the test cases covered all possible scenarios for the input parameters function and argument.
+Since the initial of my implementation of tests for the can_combine method, I achieved 100% branch coverage from 0% without the need for further enhancements. But, I experienced some errors at first in my code which makes the test itself doesn't even run rather than a decrease in coverage percentage. 
 
 <Test 2>
 
@@ -250,7 +250,7 @@ Since the initial of my implementation of tests for the can_combine method, I ac
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hithit.png">
 </div>
 
-From the start of testing the combine function, I managed to secure another 100% on my coverage testing without necessitating any additional modifications.
+From the start of testing the combine function, I managed to secure 100% on my coverage testing from 0% without necessitating any additional modifications.
 
 ### Overall
 
