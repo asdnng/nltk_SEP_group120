@@ -293,6 +293,8 @@ From the start of testing the combine function, I managed to secure 100% on my c
 
 Yujin Choi(2769224) : made test printing function that all group members can use, selecting subject, help to other memebers how to set test environment 
 
+Niek Bremer(2742459): Helped members find a fit project to use, and helped members create the test files and fix errors regarding path bugs within the test files.
+
 Juan Sebastian Dhanaharsa(276575) : 
 
 Junhyeok Lee (2777848) : In the beginning helped tracking down to install module specific in order to test out the functions (nltk data installation). Then further conducted my coverage measurement both by given tool and by my own method. Later created one new test case for call_tadm and enhanced existing rte_classifier test case by adding more cases, and eventually proved to improve by 100%. Later further contributed to the teammates when they struggled or had unclear instructions were found.
