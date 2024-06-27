@@ -153,7 +153,9 @@ Additional test cases were written to cover all possible branches in the getinfo
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
-https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/830e664ee5ebe71ecba8b60f0e432caf7f5c0bdd
+final commits to finalize working measurement:
+
+https://github.com/asdnng/nltk_SEP_group120/commit/368198b8919f1d83799531fd532b19262584d625
 
 <Provide a screenshot of the coverage results output by the instrumentation>
 
@@ -165,7 +167,9 @@ https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/830e664ee5ebe71ecba8b
 
 <Provide the same kind of information provided for Function 1>
 
-https://github.com/asdnng/nltk_SEP_group120/pull/2/commits/2b3c10cff7423ce56809085d8a48af7f1c658cd6
+final commits to finalize working measurement:
+
+https://github.com/asdnng/nltk_SEP_group120/commit/5c2c2def5005f8740b717183444d4ff59bd10ce8
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
