@@ -191,6 +191,9 @@ Additional test cases were written to cover all possible branches in the getinfo
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
+Initial coverage measurement i conducted resulted in hitting only 2 branch flags out of 5 branch flags and there was another test case existed
+, which was “..without megam” and “..with megam” tests. These both existing tests eventually hit only 3 branch flags out of 5, so I made two extra test cases to cover all branch flags at least one resulting to enhance coverage up to 100%. Test cases include an accepting algorithm, whether the sample was none or not and an unsupported algorithm where it was a hidden else statement for some, thus by considering these results full 100% coverage improvement.
+
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
@@ -204,6 +207,8 @@ Additional test cases were written to cover all possible branches in the getinfo
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_call_tadm_new_coverage.png">
 </div>
+
+I started with random args where none of the flags was hit in the beginning. So I created a whole new test case to test out all 6 branches. This function required the destination of the directory to test some branches, so if needed I added a fake address in the test if the branch can be hit although the functionality of code won’t work as it's not existing directories. As the test name states, tested input such as ["hello"], “hello” and etc, eventually made each test case to hit each branch flag at least once resulting in 100% coverage improvement.
 
 ## Coverage measurement
 
@@ -268,3 +273,5 @@ From the start of testing the combine function, I managed to secure 100% on my c
 Yujin Choi(2769224) : made test printing function that all group members can use, selecting subject
 
 Juan Sebastian Dhanaharsa(276575) : 
+
+Junhyeok Lee (2777848) : In the beginning helped tracking down to install module specific in order to test out the functions (nltk data installation). Then further conducted my coverage measurement both by given tool and by my own method. Later created one new test case for call_tadm and enhanced existing rte_classifier test case by adding more cases, and eventually proved to improve by 100%. Later further contributed to the teammates when they struggled or had unclear instructions were found.
