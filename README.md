@@ -111,17 +111,8 @@ Programming language: Python
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_1.png">
-</div>
-
-<div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_2.png">
-</div>
-
-<div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_3.png">
-</div>
-
-<div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_rte_classify_new_coverage_4.png">
 </div>
 
@@ -133,7 +124,10 @@ Programming language: Python
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/call_tadm_old_coverage.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_call_tadm_new_coverage.png">
 </div>
+
+<"Provide a screenshot of the new coverage results">
 
 <div align="center">
   <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/test_call_tadm_new_coverage.png">
