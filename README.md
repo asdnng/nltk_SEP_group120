@@ -66,6 +66,7 @@ Programming language: Python
 </div>
 
  This function also has 100% test coverage after enhancement after I added some test cases like the first one. Before the improvement, coverage of this function was 25%
+## Coverage measurement
 
 ### Your own coverage tool
 
