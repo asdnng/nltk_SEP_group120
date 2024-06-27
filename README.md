@@ -77,6 +77,8 @@ enhanced _get_pos.py URL : https://github.com/asdnng/nltk_SEP_group120/blob/main
 <Token.str>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
+https://github.com/asdnng/nltk_SEP_group120/tree/70cc526df68d02206f622f7a8c18763a618bfb1f
+
 
 <Provide a screenshot of the coverage results output by the instrumentation>
 <div align="center">
@@ -103,6 +105,7 @@ enhanced _get_pos.py URL : https://github.com/asdnng/nltk_SEP_group120/blob/main
 <Test 1: test_str>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+https://github.com/asdnng/nltk_SEP_group120/tree/70cc526df68d02206f622f7a8c18763a618bfb1f
 
 <Provide a screenshot of the old coverage results (the same as you already showed above)>
 
