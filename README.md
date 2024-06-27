@@ -114,12 +114,12 @@ Programming language: Python
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
 <div align="center">
-  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/can_combine%20hithit.png">
 </div>
 
 <Function 2: combine>
 <div align="center">
-  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine.png">
+  <img src="https://github.com/asdnng/nltk_SEP_group120/blob/main/images/combine%20hithit.png">
 </div>
 
 ## Coverage improvement
